@@ -1,15 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  color-scheme: light;
+  --font-inter: 'Inter', sans-serif;
+  --font-outfit: 'Outfit', sans-serif;
+  --font-arabic: 'Noto Sans Arabic', sans-serif;
+}
+
+[dir="rtl"] {
+  font-family: var(--font-arabic);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+[dir="ltr"] {
+  font-family: var(--font-outfit);
 }
 
 body {
-  @apply bg-white text-slate-900;
+  @apply bg-slate-50 text-slate-900 min-h-screen relative overflow-x-hidden;
+  background-attachment: fixed;
+}
+
+body::before {
+  content: "";
+  @apply fixed inset-0 -z-10;
+  background-image: radial-gradient(at 0% 0%, hsla(180, 50%, 95%, 1) 0, transparent 50%),
+    radial-gradient(at 50% 0%, hsla(200, 40%, 93%, 1) 0, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(180, 30%, 90%, 1) 0, transparent 50%);
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/70 backdrop-blur-md border border-white/20;
+  }
+
+  .glass-dark {
+    @apply bg-slate-900/10 backdrop-blur-md border border-white/10;
+  }
 }
 
 * {
   -webkit-tap-highlight-color: transparent;
+  @apply transition-colors duration-200;
+}
+
+::selection {
+  background-color: #b5e1e2;
+  color: #224145;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-200 rounded-full hover:bg-slate-300 transition-colors;
 }
