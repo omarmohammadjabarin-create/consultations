@@ -120,7 +120,7 @@ export default function Page() {
       clearForm();
     } catch (e: any) {
       console.error(e);
-      setMsg({ type: "err", text: t.error });
+      setMsg({ type: "err", text: e.message || t.error });
     } finally {
       setBusy(false);
     }
