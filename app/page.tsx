@@ -118,7 +118,18 @@ export default function Page() {
       setMsg({ type: "ok", text: t.success });
       clearForm();
     } catch (e: any) {
-      console.error(e);
+      console.error("Submission Error Details:", {
+        message: e.message,
+        details: e.details,
+        hint: e.hint,
+        code: e.code,
+        payload: {
+          consultationId,
+          doctorPhone: draft.doctorPhone,
+          urgency: draft.urgency,
+          patientsCount: draft.patients.length
+        }
+      });
       setMsg({ type: "err", text: e.message || t.error });
     } finally {
       setBusy(false);
