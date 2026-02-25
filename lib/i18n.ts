@@ -40,6 +40,8 @@ export const strings = {
     closed: "مغلقة",
     open: "فتح",
     download: "تحميل",
+    submitAnother: "إرسال استشارة أخرى",
+    sentSuccessfully: "تم الإرسال بنجاح!"
   },
   en: {
     title: "Dr. Farah Jabbarin – Consultation App",
@@ -80,5 +82,7 @@ export const strings = {
     closed: "Closed",
     open: "Open",
     download: "Download",
+    submitAnother: "Submit another consultation",
+    sentSuccessfully: "Sent successfully!"
   }
 } as const;
