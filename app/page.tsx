@@ -67,19 +67,18 @@ export default function Page() {
     }
 
     setBusy(true);
+    const consultationId = self.crypto.randomUUID();
     try {
-      const { data: consultation, error: cErr } = await supabase
+      const { error: cErr } = await supabase
         .from("consultations")
         .insert({
+          id: consultationId,
           doctor_phone: draft.doctorPhone.trim(),
           urgency: draft.urgency,
           status: "new"
-        })
-        .select("id")
-        .single();
+        });
 
       if (cErr) throw cErr;
-      const consultationId = consultation.id as string;
 
       const patientsPayload = draft.patients.map((p) => ({
         consultation_id: consultationId,
