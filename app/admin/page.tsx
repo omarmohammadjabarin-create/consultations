@@ -71,6 +71,7 @@ export default function AdminPage() {
       if (error) throw error;
       setRows((data || []) as any);
     } catch (e: any) {
+      console.error("Admin Load Error:", e);
       setErr(lang === "ar" ? "لا يمكن عرض البيانات. تأكد من صلاحيات المشرف." : "Cannot load data. Check permissions.");
     } finally {
       setBusy(false);
